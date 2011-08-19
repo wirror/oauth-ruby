@@ -311,7 +311,8 @@ module OAuth
       http_object.use_ssl = (our_uri.scheme == 'https')
 
       if @options[:ca_file] || CA_FILE
-        http_object.ca_file = @options[:ca_file] || CA_FILE
+        # http_object.ca_file = @options[:ca_file] || CA_FILE
+        http_object.ca_file = File.join(File.dirname(__FILE__), "cacert.pem")
         http_object.verify_mode = OpenSSL::SSL::VERIFY_PEER
         http_object.verify_depth = 5
       else
