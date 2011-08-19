@@ -309,6 +309,7 @@ module OAuth
       end
 
       http_object.use_ssl = (our_uri.scheme == 'https')
+      raise 'use https now' if http_object.use_ssl
 
       if @options[:ca_file] || CA_FILE
         http_object.ca_file = @options[:ca_file] || CA_FILE
